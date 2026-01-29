@@ -2190,6 +2190,7 @@ HAVING COUNT(*)>1;*/
         WHEN FINAL_VT_ACTUAL_ETD IS NOT NULL
              AND FINAL_VT_ACTUAL_ETD NOT IN ('1900-01-01','0001-01-01')
              AND DATEADD(DAY, 6, FINAL_VT_ACTUAL_ETD) <= CURRENT_DATE()   -- ETD + 6 days passed
+             AND CSH_CS_STAGE <> 'Invoiced'
              AND (POSTED_SALES_H_BC_SI_NO IS NULL 
                   OR TRIM(POSTED_SALES_H_BC_SI_NO) = '')                  -- Invoice not submitted
         THEN 'Yes'
